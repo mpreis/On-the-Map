@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        //configureUI()
+        configureUI()
         
         subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
         subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
@@ -145,7 +145,7 @@ extension LoginViewController {
         }
     }
     
-    /*
+    
     private func configureUI() {
         
         // configure background gradient
@@ -165,12 +165,12 @@ extension LoginViewController {
         textField.leftView = textFieldPaddingView
         textField.leftViewMode = .Always
         textField.backgroundColor = Constants.UI.GreyColor
-        textField.textColor = Constants.UI.BlueColor
+        textField.textColor = Constants.UI.OrangeColor
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-        textField.tintColor = Constants.UI.BlueColor
+        textField.tintColor = Constants.UI.OrangeColor
         textField.delegate = self
     }
-    */
+
     private func displayError(errorString: String?) {
         if let errorString = errorString {
             debugTextLabel.text = errorString

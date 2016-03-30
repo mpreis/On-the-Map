@@ -74,12 +74,12 @@
 			children = (
 				0F26BDF71CAA6017006E4485 /* AppDelegate.swift */,
 				0F74C3751CAA622100F32681 /* GCDBlackBox.swift */,
+				0FEBBC861CAACE2600D97AD1 /* Constants.swift */,
 				0F74C36C1CAA60F800F32681 /* Model */,
 				0F74C3771CAA64B100F32681 /* View */,
 				0F74C3701CAA615D00F32681 /* Controller */,
 				0F74C3711CAA618F00F32681 /* Assets */,
 				0F74C3741CAA61DC00F32681 /* Supporting Files */,
-				0FEBBC861CAACE2600D97AD1 /* Constants.swift */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";
