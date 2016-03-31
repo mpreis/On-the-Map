@@ -18,11 +18,25 @@ class UdacityClient : NSObject {
     // authentication state
     var sessionID : String? = nil
     
-    /*
+    
     func taskForDELETEMethod(method: String, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        return nil
+        
+        let request = NSMutableURLRequest(URL: udacityURLFromParameters(method))
+        request.HTTPMethod = "DELETE"
+        
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        return task(request, completionHandler: completionHandlerForDELETE)
     }
-    */
+    
     
     func taskForGETMethod(method: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
@@ -106,9 +120,9 @@ class UdacityClient : NSObject {
     private func udacityURLFromParameters(withPathExtension: String) -> NSURL {
         
         let components = NSURLComponents()
-        components.scheme = UdacityClient.Constants.ApiScheme
-        components.host = UdacityClient.Constants.ApiHost
-        components.path = UdacityClient.Constants.ApiPath + withPathExtension
+        components.scheme = UdacityClient.APIConstants.ApiScheme
+        components.host = UdacityClient.APIConstants.ApiHost
+        components.path = UdacityClient.APIConstants.ApiPath + withPathExtension
         components.queryItems = [NSURLQueryItem]()
         
         return components.URL!

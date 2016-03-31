@@ -165,9 +165,9 @@ extension LoginViewController {
         textField.leftView = textFieldPaddingView
         textField.leftViewMode = .Always
         textField.backgroundColor = Constants.UI.GreyColor
-        textField.textColor = Constants.UI.OrangeColor
+        textField.textColor = Constants.UI.WhiteColor
         textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
-        textField.tintColor = Constants.UI.OrangeColor
+        textField.tintColor = Constants.UI.WhiteColor
         textField.delegate = self
     }
 

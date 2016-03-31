@@ -17,25 +17,38 @@ extension UdacityClient {
             
             if success {
                 // success! we have the sessionID!
-                print("SUCCESS: Session-Id")
+                print("SUCCESS: Login (Session-Id)")
                 self.sessionID = sessionID
                 completionHandlerForAuth(success: true, errorString: nil)
             } else {
-                print("FAILED")
+                print("FAILED: Login")
                 completionHandlerForAuth(success: false, errorString: errorString)
             }
         }
     
     }
     
+    func logout(completionHandlerForLogout: (success: Bool, errorString: String?) -> Void) {
+        taskForDELETEMethod(Methods.Session) { (results, error) in
+            if let error = error {
+                print("FAILED: Logout")
+                completionHandlerForLogout(success: false, errorString: error.description)
+            } else {
+                print("SUCCESS: Logout")
+                self.sessionID = nil
+                completionHandlerForLogout(success: true, errorString: nil)
+            }
+        }
+    }
+    
     private func getSessionID(username: String, password: String, completionHandlerForToken: (success: Bool, sessionID: String?, errorString: String?) -> Void) {
     
-        let jsonBody = "{\"\(UdacityClient.JSONBodyKeys.Udacity)\":{\"\(UdacityClient.JSONBodyKeys.Username)\":\"\(username)\",\"\(UdacityClient.JSONBodyKeys.Password)\":\"\(password)\"}}"
+        let jsonUsr = "\"\(UdacityClient.JSONBodyKeys.Username)\":\"\(username)\""
+        let jsonPwd = "\"\(UdacityClient.JSONBodyKeys.Password)\":\"\(password)\""
+        let jsonBody = "{\"\(UdacityClient.JSONBodyKeys.Udacity)\":{\(jsonUsr),\(jsonPwd)}}"
         
-        /* 2. Make the request */
         taskForPOSTMethod(Methods.Session, jsonBody: jsonBody) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
                 completionHandlerForToken(success: false, sessionID: nil, errorString: "Login Failed (SessionID).")

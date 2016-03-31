@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F26BDF81CAA6017006E4485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F26BDF71CAA6017006E4485 /* AppDelegate.swift */; };
-		0F26BDFA1CAA6017006E4485 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F26BDF91CAA6017006E4485 /* FirstViewController.swift */; };
-		0F26BDFC1CAA6017006E4485 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F26BDFB1CAA6017006E4485 /* SecondViewController.swift */; };
+		0F26BDFA1CAA6017006E4485 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F26BDF91CAA6017006E4485 /* MapViewController.swift */; };
+		0F26BDFC1CAA6017006E4485 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F26BDFB1CAA6017006E4485 /* ListViewController.swift */; };
 		0F26BDFF1CAA6017006E4485 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F26BDFD1CAA6017006E4485 /* Main.storyboard */; };
 		0F26BE011CAA6017006E4485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F26BE001CAA6017006E4485 /* Assets.xcassets */; };
 		0F26BE041CAA6017006E4485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F26BE021CAA6017006E4485 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,8 @@
 		0F74C3761CAA622100F32681 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C3751CAA622100F32681 /* GCDBlackBox.swift */; };
 		0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C3781CAA64C200F32681 /* BorderedButton.swift */; };
 		0F74C37B1CAA695100F32681 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C37A1CAA695100F32681 /* LoginViewController.swift */; };
+		0FA221141CABD0A4002FE14D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221131CABD0A4002FE14D /* NavigationViewController.swift */; };
+		0FA221161CABDAC6002FE14D /* NavBarButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */; };
 		0FEBBC831CAA72DE00D97AD1 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */; };
 		0FEBBC851CAA749900D97AD1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */; };
 		0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC861CAACE2600D97AD1 /* Constants.swift */; };
@@ -26,8 +28,8 @@
 /* Begin PBXFileReference section */
 		0F26BDF41CAA6017006E4485 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F26BDF71CAA6017006E4485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F26BDF91CAA6017006E4485 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		0F26BDFB1CAA6017006E4485 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0F26BDF91CAA6017006E4485 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0F26BDFB1CAA6017006E4485 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0F26BDFE1CAA6017006E4485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F26BE001CAA6017006E4485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F26BE031CAA6017006E4485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		0F74C3751CAA622100F32681 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		0F74C3781CAA64C200F32681 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		0F74C37A1CAA695100F32681 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0FA221131CABD0A4002FE14D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButtonController.swift; sourceTree = "<group>"; };
 		0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		0FEBBC861CAACE2600D97AD1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -115,9 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				0F74C37A1CAA695100F32681 /* LoginViewController.swift */,
-				0F26BDF91CAA6017006E4485 /* FirstViewController.swift */,
-				0F26BDFB1CAA6017006E4485 /* SecondViewController.swift */,
+				0F26BDF91CAA6017006E4485 /* MapViewController.swift */,
+				0F26BDFB1CAA6017006E4485 /* ListViewController.swift */,
 				0FEBBC881CAAE50200D97AD1 /* TabBarViewController.swift */,
+				0FA221131CABD0A4002FE14D /* NavigationViewController.swift */,
+				0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -223,12 +229,14 @@
 				0F74C37B1CAA695100F32681 /* LoginViewController.swift in Sources */,
 				0FEBBC891CAAE50200D97AD1 /* TabBarViewController.swift in Sources */,
 				0FEBBC851CAA749900D97AD1 /* UdacityConvenience.swift in Sources */,
-				0F26BDFC1CAA6017006E4485 /* SecondViewController.swift in Sources */,
+				0FA221161CABDAC6002FE14D /* NavBarButtonController.swift in Sources */,
+				0F26BDFC1CAA6017006E4485 /* ListViewController.swift in Sources */,
 				0F74C3731CAA61BC00F32681 /* UdacityConstants.swift in Sources */,
 				0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */,
 				0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */,
 				0F26BDF81CAA6017006E4485 /* AppDelegate.swift in Sources */,
-				0F26BDFA1CAA6017006E4485 /* FirstViewController.swift in Sources */,
+				0FA221141CABD0A4002FE14D /* NavigationViewController.swift in Sources */,
+				0F26BDFA1CAA6017006E4485 /* MapViewController.swift in Sources */,
 				0F74C3761CAA622100F32681 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
