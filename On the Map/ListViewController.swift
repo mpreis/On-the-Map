@@ -12,6 +12,14 @@ class ListViewController: NavBarButtonController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ParseClient.sharedInstance().getStudentLocationList {
+            (success, errorString) in
+            if success {
+                print(":)")
+            } else {
+                print(":(")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

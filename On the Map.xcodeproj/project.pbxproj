@@ -19,6 +19,10 @@
 		0F74C37B1CAA695100F32681 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C37A1CAA695100F32681 /* LoginViewController.swift */; };
 		0FA221141CABD0A4002FE14D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221131CABD0A4002FE14D /* NavigationViewController.swift */; };
 		0FA221161CABDAC6002FE14D /* NavBarButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */; };
+		0FA221191CAD6108002FE14D /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221181CAD6108002FE14D /* ParseConstants.swift */; };
+		0FA2211B1CAD611B002FE14D /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211A1CAD611B002FE14D /* ParseClient.swift */; };
+		0FA2211D1CAD612B002FE14D /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211C1CAD612B002FE14D /* ParseConvenience.swift */; };
+		0FA2211F1CAD61F6002FE14D /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211E1CAD61F6002FE14D /* NetworkUtils.swift */; };
 		0FEBBC831CAA72DE00D97AD1 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */; };
 		0FEBBC851CAA749900D97AD1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */; };
 		0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC861CAACE2600D97AD1 /* Constants.swift */; };
@@ -40,6 +44,10 @@
 		0F74C37A1CAA695100F32681 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0FA221131CABD0A4002FE14D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButtonController.swift; sourceTree = "<group>"; };
+		0FA221181CAD6108002FE14D /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		0FA2211A1CAD611B002FE14D /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		0FA2211C1CAD612B002FE14D /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
+		0FA2211E1CAD61F6002FE14D /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		0FEBBC861CAACE2600D97AD1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -100,6 +108,8 @@
 		0F74C36D1CAA610000F32681 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				0FA2211E1CAD61F6002FE14D /* NetworkUtils.swift */,
+				0FA221171CAD60F2002FE14D /* Parse */,
 				0F74C36E1CAA610F00F32681 /* Udacity */,
 			);
 			name = Clients;
@@ -152,6 +162,16 @@
 				0F74C3781CAA64C200F32681 /* BorderedButton.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0FA221171CAD60F2002FE14D /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				0FA221181CAD6108002FE14D /* ParseConstants.swift */,
+				0FA2211A1CAD611B002FE14D /* ParseClient.swift */,
+				0FA2211C1CAD612B002FE14D /* ParseConvenience.swift */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,12 +251,16 @@
 				0FEBBC851CAA749900D97AD1 /* UdacityConvenience.swift in Sources */,
 				0FA221161CABDAC6002FE14D /* NavBarButtonController.swift in Sources */,
 				0F26BDFC1CAA6017006E4485 /* ListViewController.swift in Sources */,
+				0FA2211B1CAD611B002FE14D /* ParseClient.swift in Sources */,
 				0F74C3731CAA61BC00F32681 /* UdacityConstants.swift in Sources */,
 				0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */,
+				0FA2211D1CAD612B002FE14D /* ParseConvenience.swift in Sources */,
 				0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */,
+				0FA221191CAD6108002FE14D /* ParseConstants.swift in Sources */,
 				0F26BDF81CAA6017006E4485 /* AppDelegate.swift in Sources */,
 				0FA221141CABD0A4002FE14D /* NavigationViewController.swift in Sources */,
 				0F26BDFA1CAA6017006E4485 /* MapViewController.swift in Sources */,
+				0FA2211F1CAD61F6002FE14D /* NetworkUtils.swift in Sources */,
 				0F74C3761CAA622100F32681 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
