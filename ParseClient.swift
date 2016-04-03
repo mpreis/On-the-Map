@@ -10,7 +10,7 @@ import Foundation
 
 class ParseClient: NetworkUtils {
     
-    var studentLocationList: [[String: AnyObject]]? = nil
+    var studentLocationList: [ParseStudentLocation] = []
     
     func taskForGETMethod(method: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
@@ -18,7 +18,6 @@ class ParseClient: NetworkUtils {
         request.addValue(ReqeustValues.XParseAppId, forHTTPHeaderField: RequestKeys.XParseAppId)
         request.addValue(ReqeustValues.XParseRestApiKey, forHTTPHeaderField: RequestKeys.XParseRestApiKey)
         
-        print(request)
         return self.task(request, completionHandler: completionHandlerForGET)
     }
     

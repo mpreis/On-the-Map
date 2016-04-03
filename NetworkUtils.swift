@@ -42,10 +42,8 @@ class NetworkUtils : NSObject {
                 return
             }
             
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
         }
         
         /* 7. Start the request */
@@ -55,7 +53,7 @@ class NetworkUtils : NSObject {
     }
     
     // given raw JSON, return a usable Foundation object
-    private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+    func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
         do {

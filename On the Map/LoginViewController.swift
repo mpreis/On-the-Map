@@ -74,6 +74,16 @@ class LoginViewController: UIViewController {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarViewContorler") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
         }
+        
+        ParseClient.sharedInstance().getStudentLocationList {
+            (success, studLocs, errorString) in
+            if success {
+                print(":)")
+                ParseClient.sharedInstance().studentLocationList = studLocs
+            } else {
+                print(":(")
+            }
+        }
     }
 }
 
@@ -90,14 +100,12 @@ extension LoginViewController: UITextFieldDelegate {
     func keyboardWillShow(notification: NSNotification) {
         if !keyboardOnScreen {
             view.frame.origin.y -= keyboardHeight(notification)
-            movieImageView.hidden = true
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if keyboardOnScreen {
             view.frame.origin.y += keyboardHeight(notification)
-            movieImageView.hidden = false
         }
     }
     

@@ -19,6 +19,7 @@ class NavBarButtonController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     // Login
     @IBAction func logoutPressed(sender: AnyObject) {
@@ -59,7 +60,7 @@ class NavBarButtonController: UIViewController {
         view.navigationItem.rightBarButtonItem = pinBtn
     }
     
-    
+
     private func completeLogout() {
         performUIUpdatesOnMain {
             //self.debugTextLabel.text = ""
