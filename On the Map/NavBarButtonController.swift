@@ -40,6 +40,9 @@ class NavBarButtonController: UIViewController {
     // Login
     @IBAction func pinPressed(sender: AnyObject) {
         print("pin")
+        self.presentViewController(
+            self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
+            animated: true, completion: nil)
     }
     
     private func setNavigationBarButtons(view: UIViewController) {
@@ -47,7 +50,7 @@ class NavBarButtonController: UIViewController {
             title: "Logout",
             style: .Plain,
             target: view,
-            action: "logoutPressed:"
+            action: #selector(NavBarButtonController.logoutPressed(_:))
         )
         view.navigationItem.leftBarButtonItem = logoutBtn
         
@@ -55,7 +58,7 @@ class NavBarButtonController: UIViewController {
             image: UIImage(named: "pin.pdf"),
             style: .Plain,
             target: view,
-            action: "pinPressed:"
+            action: #selector(NavBarButtonController.pinPressed(_:))
         )
         view.navigationItem.rightBarButtonItem = pinBtn
     }

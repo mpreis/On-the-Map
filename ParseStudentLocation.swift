@@ -50,7 +50,7 @@ struct ParseStudentLocation {
             studentLocations.append(ParseStudentLocation(dictionary: result))
         }
         
-        return studentLocations
+        return studentLocations.sort({ $0.lastName < $1.lastName })
     }
 }
 

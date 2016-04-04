@@ -24,6 +24,7 @@
 		0FA2211B1CAD611B002FE14D /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211A1CAD611B002FE14D /* ParseClient.swift */; };
 		0FA2211D1CAD612B002FE14D /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211C1CAD612B002FE14D /* ParseConvenience.swift */; };
 		0FA2211F1CAD61F6002FE14D /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2211E1CAD61F6002FE14D /* NetworkUtils.swift */; };
+		0FC0D6F11CB2BFBA0004B33E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0D6F01CB2BFBA0004B33E /* LocationViewController.swift */; };
 		0FEBBC831CAA72DE00D97AD1 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */; };
 		0FEBBC851CAA749900D97AD1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */; };
 		0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEBBC861CAACE2600D97AD1 /* Constants.swift */; };
@@ -50,6 +51,7 @@
 		0FA2211A1CAD611B002FE14D /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		0FA2211C1CAD612B002FE14D /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		0FA2211E1CAD61F6002FE14D /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		0FC0D6F01CB2BFBA0004B33E /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		0FEBBC821CAA72DE00D97AD1 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		0FEBBC841CAA749900D97AD1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		0FEBBC861CAACE2600D97AD1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				0FEBBC881CAAE50200D97AD1 /* TabBarViewController.swift */,
 				0FA221131CABD0A4002FE14D /* NavigationViewController.swift */,
 				0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */,
+				0FC0D6F01CB2BFBA0004B33E /* LocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -143,8 +146,8 @@
 		0F74C3711CAA618F00F32681 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				0F628E8D1CB12B79005A2ED8 /* Main.storyboard */,
 				0F26BE001CAA6017006E4485 /* Assets.xcassets */,
+				0F628E8D1CB12B79005A2ED8 /* Main.storyboard */,
 				0F26BE021CAA6017006E4485 /* LaunchScreen.storyboard */,
 			);
 			name = Assets;
@@ -256,6 +259,7 @@
 				0F26BDFC1CAA6017006E4485 /* ListViewController.swift in Sources */,
 				0FA2211B1CAD611B002FE14D /* ParseClient.swift in Sources */,
 				0F74C3731CAA61BC00F32681 /* UdacityConstants.swift in Sources */,
+				0FC0D6F11CB2BFBA0004B33E /* LocationViewController.swift in Sources */,
 				0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */,
 				0FA2211D1CAD612B002FE14D /* ParseConvenience.swift in Sources */,
 				0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */,
