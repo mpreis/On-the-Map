@@ -12,22 +12,28 @@ struct ParseStudentLocation {
  
     let createdAt: String
     let updatedAt: String
-    
     let firstName: String
     let lastName: String
-    
     let latitude: Double
     let longitude: Double
-    
     let mapString: String
     let mediaURL: String
-    
     let objectId: String
     let uniqueKey: String
     
     init(dictionary: [String:AnyObject]) {
+        /*
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSSSxxx"
+        createdAt = dateFormatter.dateFromString(
+            dictionary[ParseClient.JSONBodyKeys.CreatedAt] as! String)!
+        updatedAt = dateFormatter.dateFromString(
+            dictionary[ParseClient.JSONBodyKeys.UpdatedAt] as! String)!
+        */
+        
         createdAt = dictionary[ParseClient.JSONBodyKeys.CreatedAt] as! String
         updatedAt = dictionary[ParseClient.JSONBodyKeys.UpdatedAt] as! String
+        
         firstName = dictionary[ParseClient.JSONBodyKeys.FirstName] as! String
         lastName = dictionary[ParseClient.JSONBodyKeys.LastName] as! String
         latitude = dictionary[ParseClient.JSONBodyKeys.Latitude] as! Double

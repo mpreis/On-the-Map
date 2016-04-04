@@ -30,7 +30,7 @@ class ListViewController: NavBarButtonController, UITableViewDelegate, UITableVi
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
         
         let item = ParseClient.sharedInstance().studentLocationList[indexPath.row]
-        cell.textLabel?.text = "\(item.firstName) \(item.lastName)"
+        cell.textLabel!.text = "\(item.firstName) \(item.lastName)"
         cell.imageView!.image = UIImage(named: "pin.pdf")
         
         return cell
