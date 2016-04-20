@@ -23,7 +23,7 @@ class NavBarButtonController: UIViewController {
     
     // Login
     @IBAction func logoutPressed(sender: AnyObject) {
-        //self.setUIEnabled(true)
+        print("PRESSED: Logout")
         UdacityClient.sharedInstance().logout { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
@@ -39,7 +39,7 @@ class NavBarButtonController: UIViewController {
     
     // Login
     @IBAction func pinPressed(sender: AnyObject) {
-        print("pin")
+        print("PRESSED: Pin")
         self.presentViewController(
             self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
             animated: true, completion: nil)
@@ -66,8 +66,6 @@ class NavBarButtonController: UIViewController {
 
     private func completeLogout() {
         performUIUpdatesOnMain {
-            //self.debugTextLabel.text = ""
-            //self.setUIEnabled(true)
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController")
             self.presentViewController(controller, animated: true, completion: nil)
         }

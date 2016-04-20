@@ -281,7 +281,7 @@
                                             <action selector="findOnMapPressed:" destination="9Q9-0l-bR7" eventType="touchUpInside" id="4X9-C9-xlY"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-xF-Agb" userLabel="Info Text Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-xF-Agb" userLabel="Info Text Label">
                                         <rect key="frame" x="0.0" y="256" width="560" height="271"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -307,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04d-Oe-D3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-422" y="-580"/>
+            <point key="canvasLocation" x="502" y="-740"/>
         </scene>
         <!--Link View Controller-->
         <scene sceneID="KBI-re-BLT">
@@ -354,10 +354,19 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Share"/>
+                                        <connections>
+                                            <action selector="sharePressed:" destination="CR1-A9-wv4" eventType="touchUpInside" id="hM7-L8-w8Z"/>
+                                        </connections>
                                     </button>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SEM-cW-obb">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SEM-cW-obb">
                                         <rect key="frame" x="0.0" y="216" width="560" height="311"/>
                                     </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYy-cf-QcH">
+                                        <rect key="frame" x="0.0" y="527" width="560" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -370,13 +379,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoTextLabel" destination="gYy-cf-QcH" id="Le9-H0-VKI"/>
                         <outlet property="linkTextField" destination="ALf-5L-fEv" id="Xcf-TM-FTv"/>
                         <outlet property="mapView" destination="SEM-cW-obb" id="Zit-rl-CaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAn-y1-Lbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="235" y="-580"/>
+            <point key="canvasLocation" x="1314" y="-740"/>
         </scene>
     </scenes>
     <resources>

@@ -9,8 +9,7 @@
 import UIKit
 import MapKit
 
-class LinkViewController
-: UIViewController, MKMapViewDelegate{
+class LinkViewController: UIViewController, MKMapViewDelegate{
     
     // Properties
     var appDelegate: AppDelegate!
@@ -20,6 +19,7 @@ class LinkViewController
     // The map. See the setup in the Storyboard file.
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var linkTextField: UITextField!
+    @IBOutlet weak var infoTextLabel: UILabel!
     @IBOutlet weak var submitButton: BorderedButton!
     
     override func viewDidLoad() {
@@ -59,6 +59,17 @@ class LinkViewController
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromAllNotifications()
+    }
+    
+    @IBAction func sharePressed(sender: AnyObject) {
+        if ((self.linkTextField.text?.isEmpty) != nil) {
+            print("TODO: use link \(self.linkTextField.text)")
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarViewContorler") as! UITabBarController
+            self.presentViewController(controller, animated: true, completion: nil)
+        } else {
+            self.infoTextLabel.text = "Enter link, please."
+        }
+
     }
     
     // Here we create a view with a "right callout accessory view". You might choose to look into other
