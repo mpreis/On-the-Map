@@ -39,18 +39,14 @@ class LocationViewController: UIViewController {
     }
     
     @IBAction func findOnMapPressed(sender: AnyObject) {
+        print("text: \(self.locationTextField.text)")
         if ((self.locationTextField.text?.isEmpty) != nil) {
-            self.infoTextLabel.text = "Enter location, please."
-        } else {
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LinkViewContorler")
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LinkViewController") as! LinkViewController
+            controller.studentLocation = self.locationTextField.text!
             self.presentViewController(controller, animated: true, completion: nil)
+        } else {
+            self.infoTextLabel.text = "Enter location, please."
         }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        let lvc = segue.destinationViewController as! LinkViewController;
-        lvc.studentLocation = self.locationTextField.text!
-        print(lvc.studentLocation)
     }
 }
 

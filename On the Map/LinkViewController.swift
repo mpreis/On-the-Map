@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class LinkViewController: UIViewController, MKMapViewDelegate{
+class LinkViewController
+: UIViewController, MKMapViewDelegate{
     
     // Properties
     var appDelegate: AppDelegate!
