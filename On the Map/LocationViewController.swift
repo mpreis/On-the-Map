@@ -39,7 +39,6 @@ class LocationViewController: UIViewController {
     }
     
     @IBAction func findOnMapPressed(sender: AnyObject) {
-        print("text: \(self.locationTextField.text)")
         if ((self.locationTextField.text?.isEmpty) != nil) {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LinkViewController") as! LinkViewController
             controller.studentLocation = self.locationTextField.text!

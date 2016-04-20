@@ -25,8 +25,6 @@ class LinkViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("stud-loc: \(self.studentLocation)")
-        
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -36,6 +34,25 @@ class LinkViewController
         subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
         subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
         subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
+        
+        CLGeocoder().geocodeAddressString(self.studentLocation, completionHandler: {(placemarks, error) -> Void in
+            if((error) != nil){
+                print("Error", error)
+            }
+            
+            if let placemark = placemarks?.first {
+                let coordinate:CLLocationCoordinate2D = placemark.location!.coordinate
+                print("SUCCESS: Get coordinate of \(self.studentLocation) \(coordinate.longitude) / \(coordinate.latitude)")
+                
+                var annotations = [MKPointAnnotation]()
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(self.studentLocation)"
+                annotations.append(annotation)
+                self.mapView.addAnnotations(annotations)
+                self.mapView.centerCoordinate = coordinate
+            }
+        })
         
     }
     
@@ -56,6 +73,7 @@ class LinkViewController
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
+            //pinView!.pinColor = .Red
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {
@@ -76,9 +94,6 @@ class LinkViewController
             }
         }
     }
-    
-    
-    
 }
 
 extension LinkViewController: UITextFieldDelegate {

@@ -371,6 +371,7 @@
                     </view>
                     <connections>
                         <outlet property="linkTextField" destination="ALf-5L-fEv" id="Xcf-TM-FTv"/>
+                        <outlet property="mapView" destination="SEM-cW-obb" id="Zit-rl-CaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAn-y1-Lbj" userLabel="First Responder" sceneMemberID="firstResponder"/>

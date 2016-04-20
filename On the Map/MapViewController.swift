@@ -40,7 +40,6 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
                     annotations.append(annotation)
                 }
                 self.mapView.addAnnotations(annotations)
-
             } else {
                 print(":(")
             }
