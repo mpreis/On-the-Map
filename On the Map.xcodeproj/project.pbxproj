@@ -18,6 +18,7 @@
 		0F74C3761CAA622100F32681 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C3751CAA622100F32681 /* GCDBlackBox.swift */; };
 		0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C3781CAA64C200F32681 /* BorderedButton.swift */; };
 		0F74C37B1CAA695100F32681 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74C37A1CAA695100F32681 /* LoginViewController.swift */; };
+		0F7FD4EB1CB7A74D0073F32A /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7FD4EA1CB7A74D0073F32A /* LinkViewController.swift */; };
 		0FA221141CABD0A4002FE14D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221131CABD0A4002FE14D /* NavigationViewController.swift */; };
 		0FA221161CABDAC6002FE14D /* NavBarButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */; };
 		0FA221191CAD6108002FE14D /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA221181CAD6108002FE14D /* ParseConstants.swift */; };
@@ -45,6 +46,7 @@
 		0F74C3751CAA622100F32681 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		0F74C3781CAA64C200F32681 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		0F74C37A1CAA695100F32681 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0F7FD4EA1CB7A74D0073F32A /* LinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
 		0FA221131CABD0A4002FE14D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButtonController.swift; sourceTree = "<group>"; };
 		0FA221181CAD6108002FE14D /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				0FA221131CABD0A4002FE14D /* NavigationViewController.swift */,
 				0FA221151CABDAC6002FE14D /* NavBarButtonController.swift */,
 				0FC0D6F01CB2BFBA0004B33E /* LocationViewController.swift */,
+				0F7FD4EA1CB7A74D0073F32A /* LinkViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				0FEBBC871CAACE2600D97AD1 /* Constants.swift in Sources */,
 				0FA2211D1CAD612B002FE14D /* ParseConvenience.swift in Sources */,
 				0F74C3791CAA64C200F32681 /* BorderedButton.swift in Sources */,
+				0F7FD4EB1CB7A74D0073F32A /* LinkViewController.swift in Sources */,
 				0FA221191CAD6108002FE14D /* ParseConstants.swift in Sources */,
 				0F29B6B91CAF02E400757E82 /* ParseStudentLocation.swift in Sources */,
 				0F26BDF81CAA6017006E4485 /* AppDelegate.swift in Sources */,

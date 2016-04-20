@@ -1,5 +1,5 @@
 //
-//  PositionViewController.swift
+//  LocationViewController.swift
 //  On the Map
 //
 //  Created by Mario Preishuber on 04/04/16.
@@ -14,7 +14,9 @@ class LocationViewController: UIViewController {
     var appDelegate: AppDelegate!
     var keyboardOnScreen = false
     
+    @IBOutlet weak var infoTextLabel: UILabel!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var findOnMapButton: BorderedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,21 @@ class LocationViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromAllNotifications()
+    }
+    
+    @IBAction func findOnMapPressed(sender: AnyObject) {
+        if ((self.locationTextField.text?.isEmpty) != nil) {
+            self.infoTextLabel.text = "Enter location, please."
+        } else {
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LinkViewContorler")
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let lvc = segue.destinationViewController as! LinkViewController;
+        lvc.studentLocation = self.locationTextField.text!
+        print(lvc.studentLocation)
     }
 }
 
@@ -98,7 +115,7 @@ extension LocationViewController {
             view.layer.insertSublayer(backgroundGradient, atIndex: 0)
             
             configureTextField(locationTextField)
-        }
+    }
         
         private func configureTextField(textField: UITextField) {
             let textFieldPaddingViewFrame = CGRectMake(0.0, 0.0, 13.0, 0.0)
@@ -115,7 +132,7 @@ extension LocationViewController {
 }
 
 
-// LoginViewController (Notifications)
+// LocationViewController (Notifications)
 extension LocationViewController {
     
     private func subscribeToNotification(notification: String, selector: Selector) {

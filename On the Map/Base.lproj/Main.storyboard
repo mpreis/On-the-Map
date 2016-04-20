@@ -144,6 +144,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="FY8-dD-hHr"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Login">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -243,63 +244,102 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-pU-6kp">
-                                <rect key="frame" x="0.0" y="0.0" width="560" height="527"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZLz-hF-PXs">
+                                <rect key="frame" x="20" y="37" width="560" height="527"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="F7H-WR-zAA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-CS-28T">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="TVF-dW-YuX"/>
+                                            <constraint firstAttribute="height" constant="100" id="mGy-Sk-V4a"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8J-TH-Xxb">
-                                        <rect key="frame" x="0.0" y="100" width="560" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2U-PM-oLl">
+                                        <rect key="frame" x="0.0" y="110" width="560" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Gme-Ou-yzf"/>
+                                            <constraint firstAttribute="height" constant="40" id="OHQ-g7-BXs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LocationTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Jg-yJ-a7h">
-                                        <rect key="frame" x="0.0" y="160" width="560" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="AMd-xw-6ht"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-X3-kmh" customClass="BorderedButton" customModule="On_the_Map" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="204" width="560" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="7N3-xk-Vtj"/>
-                                        </constraints>
-                                        <state key="normal" title="Find on the Map"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0X-aQ-0wc">
-                                        <rect key="frame" x="0.0" y="248" width="560" height="279"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-hD-af8">
+                                        <rect key="frame" x="0.0" y="160" width="560" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="aem-RJ-jTE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="9Q9-0l-bR7" id="Ct0-Hl-73s"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmO-hA-4WH" customClass="BorderedButton" customModule="On_the_Map" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="202" width="560" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="0H1-5H-6hH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Find on Map"/>
+                                        <connections>
+                                            <action selector="findOnMapPressed:" destination="9Q9-0l-bR7" eventType="touchUpInside" id="4X9-C9-xlY"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-xF-Agb" userLabel="Info Text Label">
+                                        <rect key="frame" x="0.0" y="256" width="560" height="271"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="k9Q-pU-6kp" firstAttribute="leading" secondItem="kTd-Se-6w7" secondAttribute="leadingMargin" id="3bq-mu-HLA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="k9Q-pU-6kp" secondAttribute="trailing" id="YTh-hT-ozy"/>
-                            <constraint firstItem="FDy-6U-EDa" firstAttribute="top" secondItem="k9Q-pU-6kp" secondAttribute="bottom" constant="18" id="aQy-ra-YOe"/>
-                            <constraint firstItem="k9Q-pU-6kp" firstAttribute="top" secondItem="OMU-6H-ZOD" secondAttribute="bottom" constant="35" id="zaM-BX-FSo"/>
+                            <constraint firstItem="ZLz-hF-PXs" firstAttribute="top" secondItem="OMU-6H-ZOD" secondAttribute="bottom" constant="35" id="1S6-bq-N2X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZLz-hF-PXs" secondAttribute="trailing" id="E4M-bV-1Qh"/>
+                            <constraint firstItem="ZLz-hF-PXs" firstAttribute="leading" secondItem="kTd-Se-6w7" secondAttribute="leadingMargin" id="GbO-Mg-QaF"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ZLz-hF-PXs" secondAttribute="bottom" constant="18" id="R6O-ri-2io"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="locationTextField" destination="2Jg-yJ-a7h" id="Yt8-B4-Sux"/>
+                        <outlet property="findOnMapButton" destination="EmO-hA-4WH" id="gvM-Op-Saq"/>
+                        <outlet property="infoTextLabel" destination="dTR-xF-Agb" id="WZj-H1-pUO"/>
+                        <outlet property="locationTextField" destination="VRG-hD-af8" id="V7h-g5-feB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04d-Oe-D3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-422" y="-580"/>
+        </scene>
+        <!--Link View Controller-->
+        <scene sceneID="KBI-re-BLT">
+            <objects>
+                <viewController id="CR1-A9-wv4" customClass="LinkViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w7v-u2-yvb"/>
+                        <viewControllerLayoutGuide type="bottom" id="StB-bw-okb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dcj-uI-tGh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YYf-xh-fW8">
+                                <rect key="frame" x="245" y="200" width="560" height="580"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YYf-xh-fW8" firstAttribute="leading" secondItem="Dcj-uI-tGh" secondAttribute="leadingMargin" id="7wg-Sa-Hyx"/>
+                            <constraint firstItem="StB-bw-okb" firstAttribute="top" secondItem="YYf-xh-fW8" secondAttribute="bottom" id="Bbj-qp-c4Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YYf-xh-fW8" secondAttribute="trailing" id="P3Y-bP-d6m"/>
+                            <constraint firstItem="YYf-xh-fW8" firstAttribute="top" secondItem="w7v-u2-yvb" secondAttribute="bottom" id="uEQ-lh-Kfv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAn-y1-Lbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269" y="-580"/>
         </scene>
     </scenes>
     <resources>
