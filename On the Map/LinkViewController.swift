@@ -64,6 +64,9 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
     @IBAction func sharePressed(sender: AnyObject) {
         if ((self.linkTextField.text?.isEmpty) != nil) {
             print("TODO: use link \(self.linkTextField.text)")
+            //appDelegate.studentLocation.createdAt = ""
+            
+            
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarViewContorler") as! UITabBarController
             self.presentViewController(controller, animated: true, completion: nil)
         } else {
@@ -84,7 +87,6 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            //pinView!.pinColor = .Red
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {

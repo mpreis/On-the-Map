@@ -22,12 +22,12 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
             (success, studLocs, errorString) in
             if success {
                 print(":)")
-                ParseClient.sharedInstance().studentLocationList = studLocs
+                ParseClient.sharedInstance().userDataList = studLocs
                 
                 // Create an MKPointAnnotation for each student location.
                 var annotations = [MKPointAnnotation]()
                 
-                for studLoc in ParseClient.sharedInstance().studentLocationList {
+                for studLoc in ParseClient.sharedInstance().userDataList {
                     
                     let coordinate = CLLocationCoordinate2D(
                         latitude: CLLocationDegrees(studLoc.latitude),

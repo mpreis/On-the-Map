@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ParseStudentLocation {
+struct UserData {
  
     let createdAt: String
     let updatedAt: String
@@ -20,6 +20,20 @@ struct ParseStudentLocation {
     let mediaURL: String
     let objectId: String
     let uniqueKey: String
+    
+    init(uniqueKey: String, firstName: String, lastName: String) {
+        self.uniqueKey = uniqueKey
+        self.firstName = firstName
+        self.lastName = lastName
+        
+        createdAt = ""
+        updatedAt = ""
+        latitude = 0.0
+        longitude = 0.0
+        mapString = ""
+        mediaURL = ""
+        objectId = ""
+    }
     
     init(dictionary: [String:AnyObject]) {
         /*
@@ -44,18 +58,18 @@ struct ParseStudentLocation {
         uniqueKey = dictionary[ParseClient.JSONBodyKeys.UniqueKey] as! String
     }
     
-    static func studentLocationFromResults(results: [[String:AnyObject]]) -> [ParseStudentLocation] {
-        var studentLocations = [ParseStudentLocation]()
+    static func studentLocationFromResults(results: [[String:AnyObject]]) -> [UserData] {
+        var studentLocations = [UserData]()
         for result in results {
-            studentLocations.append(ParseStudentLocation(dictionary: result))
+            studentLocations.append(UserData(dictionary: result))
         }
         
         return studentLocations.sort({ $0.lastName < $1.lastName })
     }
 }
 
-extension ParseStudentLocation: Equatable {}
+extension UserData: Equatable {}
 
-func ==(lhs: ParseStudentLocation, rhs: ParseStudentLocation) -> Bool {
+func ==(lhs: UserData, rhs: UserData) -> Bool {
     return lhs.uniqueKey == rhs.uniqueKey
 }

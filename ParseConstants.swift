@@ -21,6 +21,14 @@ extension ParseClient {
         static let StudentLocation = "/classes/StudentLocation"
     }
     
+    struct Parameters {
+        static let Limit = "limit"
+        static let Skip = "skip"
+        static let Order = "Order"
+        static let OrderDesc = "-"
+        static let OrderAsc = ""
+    }
+    
     struct JSONBodyKeys {
         static let ObjectId = "objectId"
         static let UniqueKey = "uniqueKey"

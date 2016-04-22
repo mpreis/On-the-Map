@@ -10,11 +10,13 @@ import Foundation
 
 class ParseClient: NetworkUtils {
     
-    var studentLocationList: [ParseStudentLocation] = []
+    var userDataList: [UserData] = []
     
     func taskForGETMethod(method: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        let request = NSMutableURLRequest(URL: self.parseURLFromParameters(method))
+        let parameters = [Parameters.Order : "\(Parameters.OrderDesc)\(JSONBodyKeys.UpdatedAt)"]
+        let request = NSMutableURLRequest(URL:
+            self.parseURLFromParameters(parameters, withPathExtension:method))
         request.addValue(ReqeustValues.XParseAppId, forHTTPHeaderField: RequestKeys.XParseAppId)
         request.addValue(ReqeustValues.XParseRestApiKey, forHTTPHeaderField: RequestKeys.XParseRestApiKey)
         
@@ -22,13 +24,19 @@ class ParseClient: NetworkUtils {
     }
     
     // create a URL from parameters
-    private func parseURLFromParameters(withPathExtension: String) -> NSURL {
+    private func parseURLFromParameters(parameters: [String:AnyObject], withPathExtension: String) -> NSURL {
         
         let components = NSURLComponents()
         components.scheme = ParseClient.APIConstants.ApiScheme
         components.host = ParseClient.APIConstants.ApiHost
-        components.path = ParseClient.APIConstants.ApiPath + withPathExtension
-        
+        components.path = ParseClient.APIConstants.ApiPath + (withPathExtension ?? "")
+        components.queryItems = [NSURLQueryItem]()
+
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+
         return components.URL!
     }
     

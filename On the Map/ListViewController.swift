@@ -22,14 +22,14 @@ class ListViewController: NavBarButtonController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ParseClient.sharedInstance().studentLocationList.count
+        return ParseClient.sharedInstance().userDataList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
         
-        let item = ParseClient.sharedInstance().studentLocationList[indexPath.row]
+        let item = ParseClient.sharedInstance().userDataList[indexPath.row]
         cell.textLabel!.text = "\(item.firstName) \(item.lastName)"
         cell.imageView!.image = UIImage(named: "pin.pdf")
         
@@ -39,7 +39,7 @@ class ListViewController: NavBarButtonController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
         
-        let mediaURL = ParseClient.sharedInstance().studentLocationList[indexPath.row].mediaURL
+        let mediaURL = ParseClient.sharedInstance().userDataList[indexPath.row].mediaURL
         guard let checkURL = NSURL(string: mediaURL) else {
             print("invalid url: \(mediaURL)")
             return

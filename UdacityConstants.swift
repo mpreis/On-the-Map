@@ -32,10 +32,13 @@ extension UdacityClient {
         // Auth
         static let Account = "account"
         static let Registered = "registered"
-        static let Key = "key"
         static let Session = "session"
         static let Id = "id"
         static let Expiration = "expiration"
-        // User Data
+        // Public User Data
+        static let User = "user"
+        static let Key = "key"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
     }
 }

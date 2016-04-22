@@ -10,7 +10,7 @@ import Foundation
 
 extension ParseClient {
 
-    func getStudentLocationList(completionHandlerForStudLocList: (success: Bool, studLocs: [ParseStudentLocation], errorString: String?) -> Void) {
+    func getStudentLocationList(completionHandlerForStudLocList: (success: Bool, studLocs: [UserData], errorString: String?) -> Void) {
         
         taskForGETMethod(Methods.StudentLocation) { (results, error) in
             if let error = error {
@@ -20,7 +20,7 @@ extension ParseClient {
                 print("SUCCESS: Get Student Location List")
                 
                 if let results = results[ParseClient.JSONBodyKeys.Results] as? [[String:AnyObject]] {
-                    let studLocs = ParseStudentLocation.studentLocationFromResults(results)
+                    let studLocs = UserData.studentLocationFromResults(results)
                     completionHandlerForStudLocList(success: true, studLocs: studLocs, errorString: nil)
                 } else {
                     completionHandlerForStudLocList(success: false, studLocs: [], errorString: "Could not parse getStudentLocationList")
