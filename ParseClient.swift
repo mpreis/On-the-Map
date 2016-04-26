@@ -41,6 +41,16 @@ class ParseClient: NetworkUtils {
         return self.task(request, completionHandler: completionHandlerForPUT)
     }
     
+    func taskForDELETEMethod(method: String, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        let request = NSMutableURLRequest(URL:
+            self.parseURLFromParameters([:], withPathExtension:method))
+        request.HTTPMethod = "DELETE"
+        requestAddValueXParse(request)
+        return self.task(request, completionHandler: completionHandlerForDELETE)
+    }
+
+    
     private func requestAddValueXParse(request: NSMutableURLRequest) {
         request.addValue(ReqeustValues.XParseAppId, forHTTPHeaderField: RequestKeys.XParseAppId)
         request.addValue(ReqeustValues.XParseRestApiKey, forHTTPHeaderField: RequestKeys.XParseRestApiKey)

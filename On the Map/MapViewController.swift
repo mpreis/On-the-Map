@@ -21,12 +21,10 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
         ParseClient.sharedInstance().getUserLocationList {
             (success, userDataList, errorString) in
             if success {
-                print(":)")
                 ParseClient.sharedInstance().userDataList = userDataList
                 
                 // Create an MKPointAnnotation for each student location.
                 var annotations = [MKPointAnnotation]()
-                
                 for userData in ParseClient.sharedInstance().userDataList {
                     
                     let coordinate = CLLocationCoordinate2D(
@@ -40,8 +38,6 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
                     annotations.append(annotation)
                 }
                 self.mapView.addAnnotations(annotations)
-            } else {
-                print(":(")
             }
         }
     }
@@ -52,12 +48,9 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            //pinView!.pinColor = .Red
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
-        else {
-            pinView!.annotation = annotation
-        }
+        else { pinView!.annotation = annotation }
         
         return pinView
     }
@@ -70,4 +63,5 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
             }
         }
     }
+
 }

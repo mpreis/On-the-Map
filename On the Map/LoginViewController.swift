@@ -31,10 +31,14 @@ class LoginViewController: UIViewController {
         
         configureUI()
         
-        subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
-        subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
-        subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
-        subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
+        subscribeToNotification(UIKeyboardWillShowNotification,
+                                selector: #selector(LoginViewController.keyboardWillShow(_:)))
+        subscribeToNotification(UIKeyboardWillHideNotification,
+                                selector: #selector(LoginViewController.keyboardWillHide(_:)))
+        subscribeToNotification(UIKeyboardDidShowNotification,
+                                selector: #selector(LoginViewController.keyboardDidShow(_:)))
+        subscribeToNotification(UIKeyboardDidHideNotification,
+                                selector: #selector(LoginViewController.keyboardDidHide(_:)))
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -50,7 +54,7 @@ class LoginViewController: UIViewController {
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             debugTextLabel.text = "Username or Password Empty."
         } else {
-            setUIEnabled(false)
+            self.setUIEnabled(false)
             let usr:String = usernameTextField.text!
             let pwd:String = passwordTextField.text!
             UdacityClient.sharedInstance().authenticateWithViewController(usr, password: pwd) { (success, errorString) in
@@ -58,7 +62,7 @@ class LoginViewController: UIViewController {
                     if success {
                         self.completeLogin()
                     } else {
-                        self.displayError(errorString)
+                        self.displayError(errorString!)
                         self.setUIEnabled(true)
                     }
                 }
@@ -132,7 +136,6 @@ extension LoginViewController {
         usernameTextField.enabled = enabled
         passwordTextField.enabled = enabled
         loginButton.enabled = enabled
-        debugTextLabel.text = ""
         debugTextLabel.enabled = enabled
         
         // adjust login button alpha
@@ -169,10 +172,8 @@ extension LoginViewController {
         textField.delegate = self
     }
 
-    private func displayError(errorString: String?) {
-        if let errorString = errorString {
-            debugTextLabel.text = errorString
-        }
+    private func displayError(errorString: String) {
+        debugTextLabel.text = errorString
     }
 }
 

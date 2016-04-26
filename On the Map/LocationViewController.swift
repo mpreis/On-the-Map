@@ -26,11 +26,14 @@ class LocationViewController: UIViewController {
         
         configureUI()
         
-        subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
-        subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
-        subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
-        subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
-
+        subscribeToNotification(UIKeyboardWillShowNotification,
+                                selector: #selector(LocationViewController.keyboardWillShow(_:)))
+        subscribeToNotification(UIKeyboardWillHideNotification,
+                                selector: #selector(LocationViewController.keyboardWillHide(_:)))
+        subscribeToNotification(UIKeyboardDidShowNotification,
+                                selector: #selector(LocationViewController.keyboardDidShow(_:)))
+        subscribeToNotification(UIKeyboardDidHideNotification,
+                                selector: #selector(LocationViewController.keyboardDidHide(_:)))
     }
     
     override func viewWillDisappear(animated: Bool) {

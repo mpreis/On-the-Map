@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LinkViewController: UIViewController, MKMapViewDelegate{
+class LinkViewController: UIViewController, MKMapViewDelegate {
     
     // Properties
     var appDelegate: AppDelegate!
@@ -32,10 +32,14 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
         
         configureUI()
         
-        subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
-        subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
-        subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
-        subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
+        subscribeToNotification(UIKeyboardWillShowNotification,
+                                selector: #selector(LocationViewController.keyboardWillShow(_:)))
+        subscribeToNotification(UIKeyboardWillHideNotification,
+                                selector: #selector(LocationViewController.keyboardWillHide(_:)))
+        subscribeToNotification(UIKeyboardDidShowNotification,
+                                selector: #selector(LocationViewController.keyboardDidShow(_:)))
+        subscribeToNotification(UIKeyboardDidHideNotification,
+                                selector: #selector(LocationViewController.keyboardDidHide(_:)))
         
         CLGeocoder().geocodeAddressString(self.mapString, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
@@ -91,9 +95,8 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
             pinView!.canShowCallout = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
-        else {
-            pinView!.annotation = annotation
-        }
+        else { pinView!.annotation = annotation }
+        
         return pinView
     }
     
@@ -105,6 +108,7 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
             }
         }
     }
+
 }
 
 extension LinkViewController: UITextFieldDelegate {

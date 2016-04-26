@@ -38,12 +38,19 @@ extension ParseClient {
             if let error = error {
                 completionHandlerForUserData(success: false, userData: nil, errorString: error.description)
             } else {
-                if let results = results[ParseClient.JSONBodyKeys.Results] as? [[String:AnyObject]] {
-                    let userData = UserData.singleUserDataFromResults(results)
-                    completionHandlerForUserData(success: true, userData: userData, errorString: nil)
-                } else {
+                guard let jsonResults = results[ParseClient.JSONBodyKeys.Results] as? [[String:AnyObject]] else {
                     completionHandlerForUserData(success: false, userData: nil, errorString: "Could not parse getUserData")
+                    return
                 }
+                
+                guard jsonResults.count > 0 else {
+                    completionHandlerForUserData(success: false, userData: nil, errorString: "Empty result")
+                    return
+                }
+                
+                completionHandlerForUserData(success: true,
+                                             userData: UserData.singleUserDataFromResults(jsonResults),
+                                             errorString: nil)
             }
         }
     }
@@ -113,6 +120,20 @@ extension ParseClient {
             }
         }
     }
+    
+    
+    func deleteUserData(objectId : String, completionHandlerForDeleteUserData: (success: Bool, errorString: String?) -> Void) {
+        
+        let method = "\(Methods.StudentLocation)/\(objectId)"
+        self.taskForDELETEMethod(method) { (result, error) in
+            if let error = error {
+                completionHandlerForDeleteUserData(success: false, errorString: error.description)
+            } else {
+                completionHandlerForDeleteUserData(success: true, errorString: nil)
+            }
+        }
+    }
+
     
     
 }

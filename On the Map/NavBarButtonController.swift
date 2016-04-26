@@ -46,7 +46,6 @@ class NavBarButtonController: UIViewController {
             alert.addAction(UIAlertAction(title: "Overwrite", style: .Default) { action in
                 switch action.style{
                 case .Default:
-                    print("Overwrite: default")
                     self.presentViewController(
                         self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
                         animated: true, completion: nil)

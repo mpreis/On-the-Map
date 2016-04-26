@@ -28,13 +28,5 @@ struct Constants {
         
         static let LoginColorTop = LighterOrangeColor.CGColor
         static let LoginColorBottom = DarkerOrangeColor.CGColor
-    }
-    
-    // Selectors
-    struct Selectors {
-        static let KeyboardWillShow: Selector = "keyboardWillShow:"
-        static let KeyboardWillHide: Selector = "keyboardWillHide:"
-        static let KeyboardDidShow: Selector = "keyboardDidShow:"
-        static let KeyboardDidHide: Selector = "keyboardDidHide:"
-    }
+    }    
 }
