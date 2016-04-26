@@ -18,25 +18,25 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ParseClient.sharedInstance().getStudentLocationList {
-            (success, studLocs, errorString) in
+        ParseClient.sharedInstance().getUserLocationList {
+            (success, userDataList, errorString) in
             if success {
                 print(":)")
-                ParseClient.sharedInstance().userDataList = studLocs
+                ParseClient.sharedInstance().userDataList = userDataList
                 
                 // Create an MKPointAnnotation for each student location.
                 var annotations = [MKPointAnnotation]()
                 
-                for studLoc in ParseClient.sharedInstance().userDataList {
+                for userData in ParseClient.sharedInstance().userDataList {
                     
                     let coordinate = CLLocationCoordinate2D(
-                        latitude: CLLocationDegrees(studLoc.latitude),
-                        longitude: CLLocationDegrees(studLoc.longitude))
+                        latitude: CLLocationDegrees(userData.getLatitude()),
+                        longitude: CLLocationDegrees(userData.getLongitude()))
                     
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = coordinate
-                    annotation.title = "\(studLoc.firstName) \(studLoc.lastName)"
-                    annotation.subtitle = studLoc.mediaURL
+                    annotation.title = "\(userData.getFirstName()) \(userData.getLastName())"
+                    annotation.subtitle = userData.getMediaURL()
                     annotations.append(annotation)
                 }
                 self.mapView.addAnnotations(annotations)
@@ -46,15 +46,9 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
         }
     }
     
-    // Here we create a view with a "right callout accessory view". You might choose to look into other
-    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
-    // method in TableViewDataSource.
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
         let reuseId = "pin"
-        
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-        
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
@@ -68,9 +62,6 @@ class MapViewController: NavBarButtonController, MKMapViewDelegate {
         return pinView
     }
     
-    
-    // This delegate method is implemented to respond to taps. It opens the system browser
-    // to the URL specified in the annotationViews subtitle property.
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()

@@ -40,9 +40,29 @@ class NavBarButtonController: UIViewController {
     // Login
     @IBAction func pinPressed(sender: AnyObject) {
         print("PRESSED: Pin")
-        self.presentViewController(
-            self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
-            animated: true, completion: nil)
+        if(AppVariables.userData.exsistsPin()) {
+            let alert = UIAlertController(title: "", message: "You have already posted a location. Would you like to override your location?", preferredStyle: UIAlertControllerStyle.Alert)
+            self.presentViewController(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "Overwrite", style: .Default) { action in
+                switch action.style{
+                case .Default:
+                    print("Overwrite: default")
+                    self.presentViewController(
+                        self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
+                        animated: true, completion: nil)
+                    
+                default:
+                    print("ALERT: pressed overwrite invalid case.")
+                }
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+            
+        } else {
+            self.presentViewController(
+                self.storyboard!.instantiateViewControllerWithIdentifier("LocationViewController"),
+                animated: true, completion: nil)
+
+        }
     }
     
     private func setNavigationBarButtons(view: UIViewController) {

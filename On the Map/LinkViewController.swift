@@ -13,8 +13,10 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
     
     // Properties
     var appDelegate: AppDelegate!
-    var studentLocation: String!
+    var mapString: String!
     var keyboardOnScreen = false
+    
+    private var coordinate:CLLocationCoordinate2D!
     
     // The map. See the setup in the Storyboard file.
     @IBOutlet weak var mapView: MKMapView!
@@ -35,22 +37,22 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
         subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
         subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
         
-        CLGeocoder().geocodeAddressString(self.studentLocation, completionHandler: {(placemarks, error) -> Void in
+        CLGeocoder().geocodeAddressString(self.mapString, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
                 print("Error", error)
             }
             
             if let placemark = placemarks?.first {
-                let coordinate:CLLocationCoordinate2D = placemark.location!.coordinate
-                print("SUCCESS: Get coordinate of \(self.studentLocation) \(coordinate.longitude) / \(coordinate.latitude)")
+                self.coordinate = placemark.location!.coordinate
+                print("SUCCESS: Get coordinate of \(self.mapString) \(self.coordinate.longitude) / \(self.coordinate.latitude)")
                 
                 var annotations = [MKPointAnnotation]()
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(self.studentLocation)"
+                annotation.coordinate = self.coordinate
+                annotation.title = "\(self.mapString)"
                 annotations.append(annotation)
                 self.mapView.addAnnotations(annotations)
-                self.mapView.centerCoordinate = coordinate
+                self.mapView.centerCoordinate = self.coordinate
             }
         })
         
@@ -63,27 +65,27 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
     
     @IBAction func sharePressed(sender: AnyObject) {
         if ((self.linkTextField.text?.isEmpty) != nil) {
-            print("TODO: use link \(self.linkTextField.text)")
-            //appDelegate.studentLocation.createdAt = ""
+            AppVariables.userData.prepareToUpdatePin(self.linkTextField.text!,
+                                                     mapString: self.mapString,
+                                                     latitude: self.coordinate.latitude,
+                                                     longitude: self.coordinate.longitude)
             
-            
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarViewContorler") as! UITabBarController
-            self.presentViewController(controller, animated: true, completion: nil)
+            ParseClient.sharedInstance().setUserData(){ (success, errorString) in
+                
+                performUIUpdatesOnMain {
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarViewContorler") as! UITabBarController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
+            }
         } else {
             self.infoTextLabel.text = "Enter link, please."
         }
 
     }
     
-    // Here we create a view with a "right callout accessory view". You might choose to look into other
-    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
-    // method in TableViewDataSource.
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        
         let reuseId = "pin"
-        
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-        
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
@@ -92,13 +94,9 @@ class LinkViewController: UIViewController, MKMapViewDelegate{
         else {
             pinView!.annotation = annotation
         }
-        
         return pinView
     }
     
-    
-    // This delegate method is implemented to respond to taps. It opens the system browser
-    // to the URL specified in the annotationViews subtitle property.
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()

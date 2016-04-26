@@ -10,17 +10,8 @@ import UIKit
 
 class TabBarViewContorler: UITabBarController {
     
-    var createStudentLocation = false;
-    var studLocLongitute: Double!
-    var studLocLantitute: Double!
-    var studLocLink: String!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(createStudentLocation) {
-        
-        }
     }
     
     override func didReceiveMemoryWarning() {

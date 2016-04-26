@@ -30,7 +30,7 @@ class ListViewController: NavBarButtonController, UITableViewDelegate, UITableVi
         let cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
         
         let item = ParseClient.sharedInstance().userDataList[indexPath.row]
-        cell.textLabel!.text = "\(item.firstName) \(item.lastName)"
+        cell.textLabel!.text = "\(item.getFirstName()) \(item.getLastName())"
         cell.imageView!.image = UIImage(named: "pin.pdf")
         
         return cell
@@ -39,7 +39,7 @@ class ListViewController: NavBarButtonController, UITableViewDelegate, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You selected cell #\(indexPath.row)!")
         
-        let mediaURL = ParseClient.sharedInstance().userDataList[indexPath.row].mediaURL
+        let mediaURL = ParseClient.sharedInstance().userDataList[indexPath.row].getMediaURL()
         guard let checkURL = NSURL(string: mediaURL) else {
             print("invalid url: \(mediaURL)")
             return

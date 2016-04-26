@@ -27,6 +27,7 @@ extension ParseClient {
         static let Order = "Order"
         static let OrderDesc = "-"
         static let OrderAsc = ""
+        static let Where = "where"
     }
     
     struct JSONBodyKeys {

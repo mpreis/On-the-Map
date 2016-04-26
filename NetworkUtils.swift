@@ -65,7 +65,6 @@ class NetworkUtils : NSObject {
         
         completionHandlerForConvertData(result: parsedResult, error: nil)
     }
-
     
     // shared instance
     class func sharedInstance() -> NetworkUtils {

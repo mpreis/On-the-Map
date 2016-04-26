@@ -9,8 +9,12 @@
 
 import UIKit
 
-// Constants
+struct AppVariables {
+    static var sessionID: String!
+    static var userData: UserData!
+}
 
+// Constants
 struct Constants {
     // MARK: UI
     struct UI {
