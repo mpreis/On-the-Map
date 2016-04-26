@@ -26,6 +26,7 @@ extension UdacityClient {
                         print("SUCCESS: Get User Data (via Parse)")
                         // user already created a pin
                         AppVariables.userData = userData
+                        completionHandlerForAuth(success: true, errorString: nil)
                     } else {
                         // user did not create a pin yet, get main information via Udacity
                         self.getUserData(uniqueKey!) { (success, userData, errorString) in

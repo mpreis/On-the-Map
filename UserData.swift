@@ -1,5 +1,5 @@
 //
-//  ParseStudentLocation.swift
+//  UserData.swift
 //  On the Map
 //
 //  Created by Mario Preishuber on 01/04/16.
@@ -14,8 +14,8 @@ struct UserData {
     private let firstName: String
     private let lastName: String
     
-    private var createdAt: String?
-    private var updatedAt: String?
+    private var createdAt: NSDate?
+    private var updatedAt: NSDate?
     private var latitude: Double?
     private var longitude: Double?
     private var mapString: String?
@@ -39,8 +39,10 @@ struct UserData {
         lastName = dictionary[ParseClient.JSONBodyKeys.LastName] as! String
         
         objectId = dictionary[ParseClient.JSONBodyKeys.ObjectId] as? String
-        createdAt = dictionary[ParseClient.JSONBodyKeys.CreatedAt] as? String
-        updatedAt = dictionary[ParseClient.JSONBodyKeys.UpdatedAt] as? String
+        let tmpc = dictionary[ParseClient.JSONBodyKeys.CreatedAt] as? String
+        let tmpu = dictionary[ParseClient.JSONBodyKeys.UpdatedAt] as? String
+        createdAt = toDateTime(tmpc!)
+        updatedAt = toDateTime(tmpu!)
         
         latitude = dictionary[ParseClient.JSONBodyKeys.Latitude] as? Double
         longitude = dictionary[ParseClient.JSONBodyKeys.Longitude] as? Double
@@ -58,11 +60,10 @@ struct UserData {
         self.longitude = longitude
         self.mapString = mapString
         self.mediaURL = mediaURL
-        
     }
     
-    mutating func setUpdatedAt(updatedAt: String) { self.updatedAt = updatedAt }
-    mutating func setCreatedAt(createdAt: String) { self.createdAt = createdAt }
+    mutating func setUpdatedAt(updatedAt: String) { self.updatedAt = toDateTime(updatedAt) }
+    mutating func setCreatedAt(createdAt: String) { self.createdAt = toDateTime(createdAt) }
     mutating func setObjectId(objectId: String) { self.objectId = objectId }
     
     func getObjectId() -> String { return self.objectId! }
@@ -74,15 +75,27 @@ struct UserData {
     func getLatitude() -> Double { return self.latitude! }
     func getLongitude() -> Double { return self.longitude! }
     
-    static func studentLocationFromResults(results: [[String:AnyObject]]) -> [UserData] {
-        var studentLocations = [UserData]()
+    static func userDataFromResults(results: [[String:AnyObject]]) -> [UserData] {
+        var userLocations = [UserData]()
         for result in results {
-            studentLocations.append(UserData(dictionary: result))
+            userLocations.append(UserData(dictionary: result))
         }
         
-        return studentLocations.sort({ $0.lastName < $1.lastName })
+        return userLocations.sort({ $0.lastName < $1.lastName })
     }
     
+    static func singleUserDataFromResults(results: [[String:AnyObject]]) -> UserData {
+        let userDataList = UserData.userDataFromResults(results)
+        let userDataListSorted = userDataList.sort(
+            { $0.updatedAt!.compare($1.updatedAt!) == NSComparisonResult.OrderedDescending} )
+        return userDataListSorted[0]
+    }
+    
+    private func toDateTime(dateString: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return dateFormatter.dateFromString(dateString)!
+    }
 }
 
 extension UserData: Equatable {}

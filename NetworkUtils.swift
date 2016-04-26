@@ -66,6 +66,11 @@ class NetworkUtils : NSObject {
         completionHandlerForConvertData(result: parsedResult, error: nil)
     }
     
+    func requestAddValueContentTypes(request: NSMutableURLRequest) {
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    }
+    
     // shared instance
     class func sharedInstance() -> NetworkUtils {
         struct Singleton {

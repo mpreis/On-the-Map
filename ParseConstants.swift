@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ParseConstants.swift
 //  On the Map
 //
 //  Created by Mario Preishuber on 31/03/16.
@@ -11,7 +11,6 @@ import Foundation
 extension ParseClient {
     
     struct APIConstants {
-        // URLs
         static let ApiScheme = "https"
         static let ApiHost = "api.parse.com"
         static let ApiPath = "/1"

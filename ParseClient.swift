@@ -16,39 +16,34 @@ class ParseClient: NetworkUtils {
         
         let request = NSMutableURLRequest(URL:
             self.parseURLFromParameters(parameters, withPathExtension:method))
-        request.addValue(ReqeustValues.XParseAppId, forHTTPHeaderField: RequestKeys.XParseAppId)
-        request.addValue(ReqeustValues.XParseRestApiKey, forHTTPHeaderField: RequestKeys.XParseRestApiKey)
-        
+        requestAddValueXParse(request)
         return self.task(request, completionHandler: completionHandlerForGET)
     }
     
     func taskForPOSTMethod(method: String, jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: parseURLWithPathExtension(method))
         request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        requestAddValueContentTypes(request)
+        requestAddValueXParse(request)
         request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
 
-        print(request)
         return self.task(request, completionHandler: completionHandlerForPOST)
     }
     
     func taskForPUTMethod(method: String,  jsonBody: String, completionHandlerForPUT: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let request = NSMutableURLRequest(URL: parseURLWithPathExtension(method))
-        
         request.HTTPMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        requestAddValueContentTypes(request)
+        requestAddValueXParse(request)
         request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
-        print(request)
         return self.task(request, completionHandler: completionHandlerForPUT)
-
+    }
+    
+    private func requestAddValueXParse(request: NSMutableURLRequest) {
+        request.addValue(ReqeustValues.XParseAppId, forHTTPHeaderField: RequestKeys.XParseAppId)
+        request.addValue(ReqeustValues.XParseRestApiKey, forHTTPHeaderField: RequestKeys.XParseRestApiKey)
     }
     
     // create a URL from parameters

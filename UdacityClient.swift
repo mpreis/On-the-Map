@@ -12,7 +12,7 @@ class UdacityClient : NetworkUtils {
     
     func taskForDELETEMethod(method: String, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        let request = NSMutableURLRequest(URL: udacityURLFromParameters(method))
+        let request = NSMutableURLRequest(URL: udacityURLWithPathExtension(method))
         request.HTTPMethod = "DELETE"
         
         var xsrfCookie: NSHTTPCookie? = nil
@@ -31,21 +31,17 @@ class UdacityClient : NetworkUtils {
     
     func taskForGETMethod(method: String, pathExtension: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        /* 1. Set the parameters */
-        /* 2/3. Build the URL, Configure the request */
-        let url = udacityURLFromParameters(method, withPathExtension: pathExtension)
+        let url = udacityURLWithPathExtension(method, withPathExtension: pathExtension)
         return self.task(
             NSMutableURLRequest(URL: url),
             completionHandler: completionHandlerForGET)
     }
     
     func taskForPOSTMethod(method: String, jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        /* 1. Set the parameters */
-        /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(URL: udacityURLFromParameters(method))
+        
+        let request = NSMutableURLRequest(URL: udacityURLWithPathExtension(method))
         request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        requestAddValueContentTypes(request)
         request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
         return self.task(request, completionHandler: completionHandlerForPOST)
@@ -59,7 +55,7 @@ class UdacityClient : NetworkUtils {
     }
 
     // create a URL from parameters
-    private func udacityURLFromParameters(withPathExtension: String) -> NSURL {
+    private func udacityURLWithPathExtension(withPathExtension: String) -> NSURL {
         let components = NSURLComponents()
         components.scheme = UdacityClient.APIConstants.ApiScheme
         components.host = UdacityClient.APIConstants.ApiHost
@@ -68,8 +64,8 @@ class UdacityClient : NetworkUtils {
         return components.URL!
     }
     
-    private func udacityURLFromParameters(method: String, withPathExtension: String) -> NSURL {
-        return udacityURLFromParameters("\(method)/\(withPathExtension)")
+    private func udacityURLWithPathExtension(method: String, withPathExtension: String) -> NSURL {
+        return udacityURLWithPathExtension("\(method)/\(withPathExtension)")
     }
     
     // shared instance

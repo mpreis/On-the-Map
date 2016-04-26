@@ -10,22 +10,22 @@ import Foundation
 
 extension ParseClient {
 
-    func getUserLocationList(completionHandlerForStudLocList: (success: Bool, userDataList: [UserData], errorString: String?) -> Void) {
+    func getUserLocationList(completionHandlerForUserLocList: (success: Bool, userDataList: [UserData], errorString: String?) -> Void) {
         
         let params = [Parameters.Order : "\(Parameters.OrderDesc)\(JSONBodyKeys.UpdatedAt)"]
         
         taskForGETMethod(Methods.StudentLocation, parameters: params) { (results, error) in
             if let error = error {
-                print("FAILED: Get Student Location List")
-                completionHandlerForStudLocList(success: false, userDataList: [], errorString: error.description)
+                print("FAILED: Get User Location List")
+                completionHandlerForUserLocList(success: false, userDataList: [], errorString: error.description)
             } else {
-                print("SUCCESS: Get Student Location List")
+                print("SUCCESS: Get User Location List")
                 
                 if let results = results[ParseClient.JSONBodyKeys.Results] as? [[String:AnyObject]] {
-                    let userDataList = UserData.studentLocationFromResults(results)
-                    completionHandlerForStudLocList(success: true, userDataList: userDataList, errorString: nil)
+                    let userDataList = UserData.userDataFromResults(results)
+                    completionHandlerForUserLocList(success: true, userDataList: userDataList, errorString: nil)
                 } else {
-                    completionHandlerForStudLocList(success: false, userDataList: [], errorString: "Could not parse getStudentLocationList")
+                    completionHandlerForUserLocList(success: false, userDataList: [], errorString: "Could not parse getUserLocationList")
                 }
             }
         }
@@ -33,26 +33,23 @@ extension ParseClient {
     
     func getUserData(uniqueKey: String, completionHandlerForUserData: (success: Bool, userData: UserData?, errorString: String?) -> Void) {
         
-        let params = [Parameters.Where : "\(JSONBodyKeys.UniqueKey)=\(uniqueKey)"]
+        let params = [Parameters.Where : "{\"\(JSONBodyKeys.UniqueKey)\":\"\(uniqueKey)\"}"]
         taskForGETMethod(Methods.StudentLocation, parameters: params) { (results, error) in
             if let error = error {
-                print("FAILED: Get Student Location")
                 completionHandlerForUserData(success: false, userData: nil, errorString: error.description)
             } else {
-                print("SUCCESS: Get Student Location")
-                print(results)
-                
-                if let results = results[ParseClient.JSONBodyKeys.Results] as? [String:AnyObject] {
-                    let userData = UserData(dictionary: results)
+                if let results = results[ParseClient.JSONBodyKeys.Results] as? [[String:AnyObject]] {
+                    let userData = UserData.singleUserDataFromResults(results)
                     completionHandlerForUserData(success: true, userData: userData, errorString: nil)
                 } else {
-                    completionHandlerForUserData(success: false, userData: nil, errorString: "Could not parse getStudentLocationList")
+                    completionHandlerForUserData(success: false, userData: nil, errorString: "Could not parse getUserData")
                 }
             }
         }
     }
     
     func setUserData(completionHandlerForSetUserData: (success: Bool, errorString: String?) -> Void) {
+        
         if(AppVariables.userData.exsistsPin()) {
             updateUserData() {(success, updatedAt, errorString) in
                 if success {
